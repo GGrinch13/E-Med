@@ -20,12 +20,7 @@ gpc_urls = ['https://gpc.ge/ka/search/mother-and-baby?category=29',
             'https://gpc.ge/ka/search/carters?category=25178',
             'https://gpc.ge/ka/search/sloggi?category=25180',
             'https://gpc.ge/ka/search/family-products?category=13',
-            'https://gpc.ge/ka/search/baby-toys?category=5724'
-    ,
-
-
-
-]
+            'https://gpc.ge/ka/search/baby-toys?category=5724']
 drugs = []
 for url in gpc_urls:
     response = requests.get(url)
