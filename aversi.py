@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 import sqlite3
 
-
+drugs = []
 # Make loop for iterate on all pages
 for category in range(1, 234):
     for page in range(1, 26):
@@ -19,12 +19,12 @@ for category in range(1, 234):
             # find Meds
             products = soup.find_all('div', class_='product')
             # Add into list
-            drugs = []
+
             for product in products:
                 med_name = product.find('h5', class_='product-title').text.strip()
                 med_price = product.find('span', class_='amount text-theme-colored').text.strip()
                 drugs.append((med_name, med_price))
-
+                print(drugs)
             # Extract and save into DB
             conn = sqlite3.connect('aversi_products.db')
             cursor = conn.cursor()

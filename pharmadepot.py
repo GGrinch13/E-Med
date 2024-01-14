@@ -6,6 +6,8 @@ import time
 
 # Make loop for iterate on all pages
 retries = 7
+drugs = []
+
 for attempt in range(retries):
         for page in range(1, 256):
             # URLs of websites
@@ -19,8 +21,6 @@ for attempt in range(retries):
                 # Find Meds
                 products = soup.find_all('a')
 
-                # Create a list for store drugs
-                drugs = []
                 # Find products
                 for product in products:
                     # Find product name and add into list
