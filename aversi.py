@@ -24,7 +24,6 @@ for category in range(1, 234):
                 med_name = product.find('h5', class_='product-title').text.strip()
                 med_price = product.find('span', class_='amount text-theme-colored').text.strip()
                 drugs.append((med_name, med_price))
-                print(drugs)
             # Extract and save into DB
             conn = sqlite3.connect('aversi_products.db')
             cursor = conn.cursor()

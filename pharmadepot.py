@@ -44,7 +44,6 @@ for attempt in range(retries):
                         price TEXT
                     )
                 ''')
-                print(drugs)
 
                 # Insert product information into the database
                 for med in drugs:
