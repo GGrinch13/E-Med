@@ -2,25 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        /* Add some basic styling for side-by-side display */
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        ul li {
-            margin-bottom: 5px;
-        }
-
-        #med-list, #med-list2, #med-list3 {
-            display: flex;
-            flex-direction: column;
-            margin-right: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/index.css">
+    <title>E-Med</title>
     <script>
         function searchTasks() {
             // Function to search tasks based on input value
@@ -101,14 +84,14 @@
 <body>
 
     <!-- Title and Search Bar -->
-    <h1>Meds</h1>
-    <input type="text" id="search-input"  onkeyup="searchTasks()" placeholder="Search tasks...">
+    <h1>შეადარე ფასები მარტივად</h1>
+    <input type="text" id="search-input"  onkeyup="searchTasks()" placeholder="შეიყვანეთ წამლის დასახელება...">
     
     <!-- Sorting Button -->
-    <button onclick="sortLists()">Sort by Med[1]</button>
+    <button onclick="sortLists()">დალაგება</button>
 
     <!-- div to display items -->
-    <div style="display: flex;">
+    <div style="display: flex; justify-content: center;">
         <!-- iterate through DBs to get all meds from all pharmacies -->
         <ul id="gpc_meds">
             <h2>ჯიპისი</h2>

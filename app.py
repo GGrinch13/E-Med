@@ -3,8 +3,6 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-gpc_db = 'gpc_products.db'
-
 
 @app.route('/')
 def index():
