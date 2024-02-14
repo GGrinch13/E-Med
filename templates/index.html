@@ -85,16 +85,18 @@
 
     <!-- Title and Search Bar -->
     <h1>შეადარე ფასები მარტივად</h1>
+    <div style="display: flex; align-items: center;">
     <input type="text" id="search-input"  onkeyup="searchTasks()" placeholder="შეიყვანეთ წამლის დასახელება...">
     
     <!-- Sorting Button -->
     <button onclick="sortLists()">დალაგება</button>
-
+</div>
     <!-- div to display items -->
     <div style="display: flex; justify-content: center;">
         <!-- iterate through DBs to get all meds from all pharmacies -->
+        <div style="max-width: 33%;">
+        <h2>ჯიპისი</h2>
         <ul id="gpc_meds">
-            <h2>ჯიპისი</h2>
             {% for gpc in gpc_products %}
             <li>
                 <div>
@@ -104,8 +106,10 @@
             </li>
             {% endfor %}
         </ul>
+    </div>
+    <div style="max-width: 33%;">
+        <h2>ავერსი</h2>
         <ul id="aversi_meds">
-            <h2>ავერსი</h2>
             {% for aversi in aversi_products %}
             <li>
                 <div>
@@ -115,8 +119,10 @@
             </li>
             {% endfor %}
         </ul>
+    </div>
+    <div style="max-width: 33%;">
+        <h2>ფარმადეპო</h2>
         <ul id="pharmadepot_meds">
-            <h2>ფარმადეპო</h2>
             {% for pharmadepot in pharmadepot_products %}
             <li>
                 <div>
@@ -126,6 +132,7 @@
             </li>
             {% endfor %}
         </ul>
+    </div>
     </div>
 </body>
 </html>
