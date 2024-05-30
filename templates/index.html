@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/index.css">
+    <title>E-Med</title>
+    <script>
+        function searchTasks() {
+            // Function to search tasks based on input value
+            var input, filter, ul1, ul2, ul3, li1, li2, li3, span, i, txtValue;
+            input = document.getElementById("search-input");
+            filter = input.value;
+            ul1 = document.getElementById("gpc_meds");
+            ul2 = document.getElementById("aversi_meds");
+            ul3 = document.getElementById("pharmadepot_meds");
+            li1 = ul1.getElementsByTagName("li");
+            li2 = ul2.getElementsByTagName("li");
+            li3 = ul3.getElementsByTagName("li");
+
+            // Loop through all tasks in the GPC list and hide/show them based on the filter
+            for (i = 0; i < li1.length; i++) {
+                span = li1[i].getElementsByTagName("span")[0];
+                txtValue = span.textContent || span.innerText;
+                if (txtValue.indexOf(filter) > -1) {
+                    li1[i].style.display = "";
+                } else {
+                    li1[i].style.display = "none";
+                }
+            }
+
+            // Loop through all tasks in the Aversi list and hide/show them based on the filter
+            for (i = 0; i < li2.length; i++) {
+                span = li2[i].getElementsByTagName("span")[0];
+                txtValue = span.textContent || span.innerText;
+                if (txtValue.indexOf(filter) > -1) {
+                    li2[i].style.display = "";
+                } else {
+                    li2[i].style.display = "none";
+                }
+            }
+
+            // Loop through all tasks in the Pharmadepot list and hide/show them based on the filter
+            for (i = 0; i < li3.length; i++) {
+                span = li3[i].getElementsByTagName("span")[0];
+                txtValue = span.textContent || span.innerText;
+                if (txtValue.indexOf(filter) > -1) {
+                    li3[i].style.display = "";
+                } else {
+                    li3[i].style.display = "none";
+                }
+            }
+        }
+
+        function sortLists() {
+            // Function to sort all lists based on the value of the second item in each tuple
+            sortList("gpc_meds");
+            sortList("aversi_meds");
+            sortList("pharmadepot_meds");
+        }
+
+        function sortList(listId) {
+            var ul = document.getElementById(listId);
+
+            // Get the list items
+            var li = Array.from(ul.getElementsByTagName("li"));
+
+            // Combine and sort the list items based on the value of the second item in each tuple
+            var sortedList = li.sort(function(a, b) {
+                var valueA = parseFloat(a.getElementsByTagName("span")[1].innerText.replace(/[^\d.]/g, '').trim());
+                var valueB = parseFloat(b.getElementsByTagName("span")[1].innerText.replace(/[^\d.]/g, '').trim());
+                return valueA - valueB;
+            });
+
+            // Clear the existing list
+            ul.innerHTML = "";
+
+            // Append the sorted list items back to the list
+            sortedList.forEach(function(li) {
+                ul.appendChild(li);
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Title and Search Bar -->
+    <h1>შეადარე ფასები მარტივად</h1>
+    <div style="display: flex; align-items: center;">
+    <input type="text" id="search-input"  onkeyup="searchTasks()" placeholder="შეიყვანეთ წამლის დასახელება...">
+    
+    <!-- Sorting Button -->
+    <button onclick="sortLists()">დალაგება</button>
+</div>
+    <!-- div to display items -->
+    <div style="display: flex; justify-content: center;">
+        <!-- iterate through DBs to get all meds from all pharmacies -->
+        <div style="max-width: 33%;">
+        <h2>ჯიპისი</h2>
+        <ul id="gpc_meds">
+            {% for gpc in gpc_products %}
+            <li>
+                <div>
+                    <span>{{ gpc[0] }}</span>
+                    <span>{{ gpc[1] }}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="max-width: 33%;">
+        <h2>ავერსი</h2>
+        <ul id="aversi_meds">
+            {% for aversi in aversi_products %}
+            <li>
+                <div>
+                    <span>{{ aversi[0] }}</span>
+                    <span>{{ aversi[1] }}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="max-width: 33%;">
+        <h2>ფარმადეპო</h2>
+        <ul id="pharmadepot_meds">
+            {% for pharmadepot in pharmadepot_products %}
+            <li>
+                <div>
+                    <span>{{ pharmadepot[0] }}</span>
+                    <span>{{ pharmadepot[1] }}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+</body>
+</html>
