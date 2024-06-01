@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (EMedic)" project-jdk-type="Python SDK" />
+=======
+  <component name="Black">
+    <option name="sdkName" value="Python 3.12" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+>>>>>>> e916280bc97fd42d4034dd727a55cac2f8ab53d9
 </project>

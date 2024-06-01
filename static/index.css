@@ -15,7 +15,11 @@ h2 {
     justify-content: center;
 }
 #search-input {
+
     padding: 10px;
+=======
+    padding: 15px;
+
     margin: 1%;
     width: 100%;
     border-radius: 5px;
@@ -25,12 +29,20 @@ h2 {
 button {
     background-color: #2ecc71;
     color: #fff;
+
     padding: 10px 20px;
+=======
+    padding: 13px 50px;
+
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 1%;
+
     font-size: 9px;
+=======
+    font-size: 16px;
+
 }
 
 button:hover {
@@ -50,7 +62,11 @@ ul {
 }
 
 li {
+<<<<<<< HEAD
     font-size: 9px;
+=======
+    font-size: 20px;
+
     background-color: #fff;
     padding: 10px;
     margin: 5px;
